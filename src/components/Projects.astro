@@ -1,0 +1,151 @@
+---
+import Tailwind from '@icons/Tailwind.astro'
+import Angular from '@icons/Angular.astro'
+import Nestjs from '@icons/Nestjs.astro';
+import PostgreSQL from '@icons/PostgreSQL.astro';
+import Prisma from '@icons/Prisma.astro';
+import Swagger from '@icons/Swagger.astro';
+const SKILL = {
+  ANGULAR: {
+    name: "Angular",
+    class: "bg-purple-900/60 text-white",
+    icon: Angular
+  },
+  TAILWIND: {
+    name: "Tailwind",
+    class: "bg-[#003159] text-[#73bcf6]",
+    icon:Tailwind
+  },
+  NESTJS: {
+    name: "Nestjs",
+    class: "bg-red-900 text-red-100",
+    icon:Nestjs
+  },
+  POSTGRESQL: {
+    name:"Postgresql",
+    class: "bg-blue-900 text-white",
+    icon:PostgreSQL
+  },
+  PRISMA: {
+    name: "Prisma",
+    class: "bg-green-900 text-green-300",
+    icon: Prisma
+  },
+  SWAGGER: {
+    name:"Swagger",
+    class: "bg-green-700 text-white",
+    icon:Swagger
+  }
+};
+const PROJECTS = [
+  {
+    img: "/projects/mortyProject.webp",
+    title: "App envios",
+    description: "Una app de envios",
+    skill: [SKILL.ANGULAR, SKILL.TAILWIND],
+    links: "https://morty-app-ten.vercel.app/",
+    gitHub: "https://github.com/AldroX/RickMorty.git",
+  },
+    {
+    img: "/projects/todoApp.webp",
+    title: "Todo App",
+    description: "Una app encargada de la gestion de las tareas de cada usuario",
+    skill: [SKILL.ANGULAR, SKILL.NESTJS, SKILL.POSTGRESQL, SKILL.PRISMA,SKILL.SWAGGER],
+    links: "https://morty-app-ten.vercel.app/",
+    gitHub: "https://github.com/AldroX/RickMorty.git",
+  },
+];
+---
+
+{
+  PROJECTS.map(({ title, description, skill, img, links, gitHub }) => (
+    <article class="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-900/60 hover:border-purple-900/60 mb-10">
+      {/* Imagen con overlay */}
+      <div class="relative overflow-hidden">
+        <img
+          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+          src={img}
+          alt={`Captura de pantalla del proyecto ${title}`}
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+        {/* Botones de acción */}
+        <div class="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+          <a
+            href={links}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-blue-500/90 hover:bg-blue-500 text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200 hover:scale-105"
+          >
+            Ver Demo
+          </a>
+          <a
+            href={gitHub}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-gray-800/90 hover:bg-gray-700 text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200 hover:scale-105"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      {/* Contenido */}
+      <div class="p-6">
+        <h3 class="text-2xl font-bold text-blue-500 mb-3 group-hover:text-blue-300 transition-colors duration-300">
+          {title}
+        </h3>
+        <p class="text-gray-300 mb-6 text-pretty leading-relaxed">
+          {description}
+        </p>
+
+        {/* Skills */}
+        <div class="flex flex-wrap gap-2">
+          {skill.map((skill) => (
+            <span class={`flex items-center gap-x-2 rounded-full text-xs ${skill.class} px-2 py-1`}>
+              <skill.icon class=" size-5" />
+              {skill.name}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Efecto de brillo en hover */}
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+    </article>
+  ))
+}
+
+<!-- ---
+const PROJECTS = [
+  {
+    img: "/projects/mortyProject.webp",
+    title: "App envios",
+    description: "Una app de envios",
+    skill: ["HTML", "CSS", "JavaScript"],
+    links: "https://morty-app-ten.vercel.app/",
+    gitHub: "https://github.com/AldroX/RickMorty.git",
+  },
+];
+---
+
+{
+  PROJECTS.map(({ title, description, skill, img }) => (
+    <article>
+      <img
+        class=" rounded shadow-2xl shadow-white/10 w-full h-64 object-cover"
+        src={img}
+        alt={`Captura de pantalla del proyecto ${title}`}
+      />
+      <h3 class="text-2xl font-semibold text-yellow-200 mb-2 ">{title}</h3>
+      <p class="text-lg mb-4 text-pretty">{description}</p>
+      <ul class="flex flex-row gap-4">
+        {skill.map((skill) => (
+          <li class=" border rounded-2xl px-4 py-2 mb-4 text-amber-300 bg-yellow-950 text-sm font-medium ">
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </article>
+  ))
+} -->
