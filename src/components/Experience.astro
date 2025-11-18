@@ -1,0 +1,31 @@
+---
+import ExperienceItems from "./ExperienceItems.astro";
+
+const EXPERIENCIE = [
+  {
+    date: "Actualidad....",
+    title: "Application UI code in Tailwind CSS",
+    description:
+      "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+    link: "https://github.com/AldroX/task_flow",
+  },
+  {
+    date: "February 2022",
+    title: "Application UI code in Tailwind CSS",
+    description:
+      "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+    link: "",
+  },
+
+];
+---
+
+<div class="mt-20">
+  {
+    EXPERIENCIE.map((experience) => (
+      <div class="mb-10 ms-4">
+        <ExperienceItems {...experience} />
+      </div>
+    ))
+  }
+</div>
