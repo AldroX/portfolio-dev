@@ -1,0 +1,72 @@
+---
+import Angular from "@icons/Angular.astro";
+import AstroIcon from "@icons/AstroIcon.astro";
+import Git from "@icons/Git.astro";
+import GitHub from "@icons/GitHub.astro";
+import GitLab from "@icons/GitLab.astro";
+import Java from "@icons/Java.astro";
+import Nestjs from "@icons/Nestjs.astro";
+import PostgreSQL from "@icons/PostgreSQL.astro";
+import Prisma from "@icons/Prisma.astro";
+import Swagger from "@icons/Swagger.astro";
+import Tailwind from "@icons/Tailwind.astro";
+import Tool from "@icons/Tool.astro";
+
+const SKILL = [
+  { name: "Angular", icon: Angular },
+  { name: "Tailwind", icon: Tailwind },
+  { name: "Nestjs", icon: Nestjs },
+  { name: "PostgreSQL", icon: PostgreSQL },
+  { name: "Prisma", icon: Prisma },
+  { name: "Swagger", icon: Swagger },
+  { name: "Java", icon: Java },
+  { name: "Git", icon: Git },
+  { name: "GitHub", icon: GitHub },
+  { name: "GitLab", icon: GitLab },
+  { name: "Astro", icon: AstroIcon },
+];
+
+const { speedMs = 50000 } = Astro.props;
+---
+
+<section class="w-full mx-auto py-8 mt-10">
+  <h2 class="text-4xl font-semibold mb-10 flex gap-x-3 items-center">
+    <Tool class="size-9" />
+    Habilidades y herramientas
+  </h2>
+  <article class="overflow-hidden relative z-10 mx-auto px-4 py-2">
+    <!-- Gradiente para enmascarar los bordes del scroll -->
+    <div
+      class="[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+    >
+      <div
+        class="flex will-change-transform w-max translate-x-0"
+        style={`animation: carousel-scroll ${speedMs}ms linear infinite`}
+      >
+        <!-- Duplicamos la lista para efecto infinito -->
+        {
+          [...SKILL, ...SKILL].map((skill) => (
+            <div class="group flex flex-col items-center justify-center px-6 py-7 mx-4 min-w-[160px] md:min-w-[180px] rounded-lg">
+              <div class="w-10 h-10 mb-2 flex items-center justify-center">
+                <skill.icon class="size-12 transition duration-300 group-hover:scale-110 light:opacity-80 dark:invert dark:brightness-0 dark:saturate-0 dark:group-hover:filter-none" />
+              </div>
+              <span class="text-sm font-semibold text-[color:var(--color-text-muted)] transition-colors">
+                {skill.name}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </article>
+</section>
+<style>
+  @keyframes carousel-scroll {
+    0% {
+      transform: translateX(-20%);
+    }
+    100% {
+      transform: translateX(-70%);
+    }
+  }
+</style>
