@@ -1,43 +1,69 @@
-# Astro Starter Kit: Minimal
+# alex.dev — Portfolio personal
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+Portfolio personal de Alejandro Yero, Ingeniero en Ciencias Informáticas con enfoque full-stack y particular afinidad por el frontend. Construido con [Astro](https://astro.build) y [Tailwind CSS](https://tailwindcss.com), con animaciones sutiles de [Framer Motion](https://www.framer.com/motion/).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Características
 
-## 🚀 Project Structure
+- **Diseño responsive** — Adaptado a todos los dispositivos
+- **Modo oscuro/claridad** — Toggle con persistencia en `localStorage` y detección de preferencia del sistema
+- **Animaciones de reveals** — Entradas escalonadas con `IntersectionObserver`, respetuoso con `prefers-reduced-motion`
+- **Sin JavaScript cliente** — El DOM se renderiza en el servidor; el JS es solo para interacciones decorativas
 
-Inside of your Astro project, you'll see the following folders and files:
+## Tecnologías
+
+| Categoría      | Tecnología          |
+| -------------- | ------------------- |
+| Framework      | Astro 5             |
+| Estilos        | Tailwind CSS 4      |
+| Animaciones    | Framer Motion       |
+| Tipado         | TypeScript          |
+| Utils          | clsx + tailwind-merge |
+
+## Estructura del proyecto
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+public/              # Assets estáticos (favicon, imágenes de proyectos, CV)
+src/
+├── components/      # Componentes UI reutilizables (Hero, About, Skills, Experience, Projects)
+├── icons/           # Iconos SVG como componentes Astro
+├── layouts/         # Layout de página (Header, Footer, Main)
+├── lib/             # Utilidades (cn para merge de clases)
+├── pages/           # Rutas (index.astro)
+└── styles/          # CSS global (Tailwind directives)
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Los alias `@components/*`, `@layouts/*` e `@icons/*` están configurados en `tsconfig.json` y funcionan gracias al plugin de TypeScript de Astro.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Comandos
 
-Any static assets, like images, can be placed in the `public/` directory.
+Desde la raíz del proyecto:
 
-## 🧞 Commands
+| Comando            | Acción                                      |
+| :----------------- | :------------------------------------------ |
+| `pnpm dev`         | Inicia el servidor de desarrollo en `localhost:4321` |
+| `pnpm build`       | Genera el sitio estático en `./dist/`       |
+| `pnpm preview`     | Previsualiza el build localmente            |
 
-All commands are run from the root of the project, from a terminal:
+## Desarrollo
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+```sh
+# 1. Clona el repositorio
+git clone <url-del-repo>
+cd portfolio-dev
 
-## 👀 Want to learn more?
+# 2. Instala dependencias
+pnpm install
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+# 3. Inicia el servidor de desarrollo
+pnpm dev
+```
+
+Abre [http://localhost:4321](http://localhost:4321) para ver el resultado.
+
+## Deployment
+
+El sitio está listo para desplegarse como sitio estático en cualquier host (Vercel, Netlify, Cloudflare Pages, etc.). Astro genera HTML estático por defecto.
+
+```sh
+pnpm build
+```
