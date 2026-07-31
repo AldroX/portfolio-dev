@@ -1,34 +1,67 @@
 ---
-import Header from "@layouts/Header.astro";
 import "../styles/global.css";
-import Main from "@layouts/Main.astro";
+import Header from "@layouts/Header.astro";
 import Footer from "@layouts/Footer.astro";
-interface Props {
-  title: string;
-  description: string;
-}
-const { description, title } = Astro.props;
+import Hero from "@components/Hero.astro";
+import Skills from "@components/Skills.astro";
+import SectionContainer from "@components/SectionContainer.astro";
+import Briefcase from "@icons/Briefcase.astro";
+import Code from "@icons/Code.astro";
+import User from "@icons/User.astro";
+import Experience from "@components/Experience.astro";
+import Projects from "@components/Projects.astro";
+import About from "@components/About.astro";
 ---
 
-<html lang="en">
+<html lang="es" class="">
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content={description} />
+    <meta name="description" content="Portafolio de Alejandro Yero — Full-stack developer especializado en frontend. Angular, TypeScript, NestJS, y más." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>alex.dev — Alejandro Yero</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Prevent FOUC (flash of unstyled content with dark mode) -->
+    <script>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
   <body>
-    <div
-      class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(35,55,167,0.7),rgba(255,255,255,0))]"
-    >
-    </div>
     <Header />
-    <Main
-      title="Portafolio de aldrox - Desarrollador web con mas de 3 años"
-      description="Contrata a aldrox dev para crear tu aplicación web o móvil"
-    />
+    <main>
+      <Hero />
+      <SectionContainer id="experiencia">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 flex gap-x-3 items-center">
+          <Briefcase class="size-8 md:size-9" />
+          Experiencia
+        </h2>
+        <Experience />
+      </SectionContainer>
+      <Skills />
+      <SectionContainer id="proyectos">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 flex gap-x-3 items-center">
+          <Code class="size-8 md:size-9" />
+          Proyectos
+        </h2>
+        <Projects />
+      </SectionContainer>
+      <SectionContainer id="sobre-mi">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 flex gap-x-3 items-center">
+          <User class="size-8 md:size-9" />
+          Sobre mí
+        </h2>
+        <About />
+      </SectionContainer>
+    </main>
     <Footer />
   </body>
 </html>

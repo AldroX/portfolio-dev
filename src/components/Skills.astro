@@ -1,0 +1,51 @@
+---
+import TypeScriptIcon from '@icons/TypeScript.astro';
+import AngularIcon from '@icons/Angular.astro';
+import TailwindIcon from '@icons/Tailwind.astro';
+import AstroIcon from '@icons/AstroIcon.astro';
+import NestjsIcon from '@icons/Nestjs.astro';
+import PostgreSQL from '@icons/PostgreSQL.astro';
+import Prisma from '@icons/Prisma.astro';
+import Git from '@icons/Git.astro';
+import GitLab from '@icons/GitLab.astro';
+import Tool from '@icons/Tool.astro';
+
+const skills = [
+  { icon: TypeScriptIcon, name: "TypeScript", description: "Tipado estático, genéricos, interfaces", gradient: "from-blue-500 to-cyan-500" },
+  { icon: AngularIcon, name: "Angular", description: "Componentes, RxJS, señales, módulos", gradient: "from-red-500 to-rose-500" },
+  { icon: AstroIcon, name: "Astro", description: "Islas, contenido estático, View Transitions", gradient: "from-orange-500 to-amber-500" },
+  { icon: NestjsIcon, name: "NestJS", description: "APIs REST, GraphQL, módulos y guards", gradient: "from-red-600 to-red-800" },
+  { icon: PostgreSQL, name: "PostgreSQL", description: "Consultas, índices, relaciones complejas", gradient: "from-blue-600 to-indigo-600" },
+  { icon: Prisma, name: "Prisma", description: "ORM, migraciones, schema design", gradient: "from-green-600 to-emerald-600" },
+  { icon: TailwindIcon, name: "Tailwind CSS", description: "Diseño utilitario, responsive, temas", gradient: "from-cyan-500 to-teal-500" },
+  { icon: Git, name: "Git", description: "Control de versiones, branching, CI/CD", gradient: "from-orange-600 to-red-500" },
+];
+---
+
+<section id="skills" class="py-20 md:py-32">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center space-y-4 mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold">
+        Tecnologías que <span class="gradient-text">domino</span>
+      </h2>
+      <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+        Stack completo para llevar ideas a producción, del frontend al backend
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {skills.map((skill) => {
+        const Icon = skill.icon;
+        return (
+          <div class="group relative p-6 rounded-2xl border border-border bg-card hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <div class={`inline-flex p-3 rounded-xl bg-gradient-to-br ${skill.gradient} mb-4`}>
+              <Icon width="24" height="24" />
+            </div>
+            <h3 class="text-lg font-semibold mb-2">{skill.name}</h3>
+            <p class="text-sm text-muted-foreground">{skill.description}</p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
