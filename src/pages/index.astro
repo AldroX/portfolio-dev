@@ -16,13 +16,18 @@ import About from "@components/About.astro";
 <html lang="es" class="">
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Portafolio de Alejandro Yero — Full-stack developer especializado en frontend. Angular, TypeScript, NestJS, y más." />
+    <meta name="description" content="Portafolio de Alejandro Yero — Ingeniero en Ciencias Informáticas, full-stack con énfasis en frontend. Angular, TypeScript, NestJS, y más." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>alex.dev — Alejandro Yero</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <!-- Prevent FOUC (flash of unstyled content with dark mode) -->
     <script>
@@ -39,29 +44,62 @@ import About from "@components/About.astro";
     <Header />
     <main>
       <Hero />
-      <SectionContainer id="experiencia">
-        <h2 class="text-3xl md:text-4xl font-bold mb-10 flex gap-x-3 items-center">
-          <Briefcase class="size-8 md:size-9" />
-          Experiencia
-        </h2>
-        <Experience />
+      <SectionContainer id="sobre-mi">
+        <div class="mb-14 flex items-center gap-4" data-reveal>
+          <span class="flex size-11 items-center justify-center rounded-xl border border-border bg-surface text-primary dark:text-mint">
+            <User class="size-5" />
+          </span>
+          <h2 class="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+            Sobre mí
+          </h2>
+        </div>
+        <About />
       </SectionContainer>
       <Skills />
-      <SectionContainer id="proyectos">
-        <h2 class="text-3xl md:text-4xl font-bold mb-10 flex gap-x-3 items-center">
-          <Code class="size-8 md:size-9" />
-          Proyectos
-        </h2>
-        <Projects />
+      <SectionContainer id="experiencia">
+        <div class="mb-14 flex items-center gap-4" data-reveal>
+          <span class="flex size-11 items-center justify-center rounded-xl border border-border bg-surface text-primary dark:text-mint">
+            <Briefcase class="size-5" />
+          </span>
+          <h2 class="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+            Experiencia
+          </h2>
+        </div>
+        <Experience />
       </SectionContainer>
-      <SectionContainer id="sobre-mi">
-        <h2 class="text-3xl md:text-4xl font-bold mb-10 flex gap-x-3 items-center">
-          <User class="size-8 md:size-9" />
-          Sobre mí
-        </h2>
-        <About />
+      <SectionContainer id="proyectos" class="bg-background-secondary">
+        <div class="mb-14 flex items-center gap-4" data-reveal>
+          <span class="flex size-11 items-center justify-center rounded-xl border border-border bg-surface text-primary dark:text-mint">
+            <Code class="size-5" />
+          </span>
+          <h2 class="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+            Proyectos
+          </h2>
+        </div>
+        <Projects />
       </SectionContainer>
     </main>
     <Footer />
+    <script>
+      document.documentElement.classList.add('js');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const targets = document.querySelectorAll('[data-reveal]');
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+        );
+        targets.forEach((target) => observer.observe(target));
+      } else {
+        targets.forEach((target) => target.classList.add('is-revealed'));
+      }
+    </script>
   </body>
 </html>

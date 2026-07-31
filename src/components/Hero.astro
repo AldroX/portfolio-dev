@@ -1,61 +1,79 @@
-<section class="relative overflow-hidden py-20 md:py-32">
-  <!-- Animated blobs -->
-  <div class="absolute inset-0 -z-10">
-    <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500/20 dark:bg-purple-500/10 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob" />
-    <div class="absolute top-0 -right-4 w-72 h-72 bg-pink-500/20 dark:bg-pink-500/10 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob animation-delay-2000" />
-    <div class="absolute -bottom-8 left-20 w-72 h-72 bg-blue-500/20 dark:bg-blue-500/10 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob animation-delay-4000" />
+<section class="relative flex min-h-screen items-center overflow-hidden" style="min-height: 100svh">
+  <!-- Green glow background -->
+  <div class="absolute inset-0 -z-10" aria-hidden="true">
+    <div class="hero-gradient-wash" />
+    <div class="hero-glow animate-glow-pulse" />
+    <div class="hero-glow-secondary" />
   </div>
 
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-      <!-- Avatar illustration -->
-      <div class="relative shrink-0">
-        <div class="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 p-1">
-          <div class="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
-            <svg viewBox="0 0 120 120" class="w-full h-full text-muted-foreground">
-              <!-- Abstract avatar - geometric face -->
-              <circle cx="60" cy="45" r="18" fill="currentColor" opacity="0.15"/>
-              <ellipse cx="60" cy="85" rx="32" ry="22" fill="currentColor" opacity="0.1"/>
-              <circle cx="60" cy="45" r="3" fill="currentColor" opacity="0.4"/>
-              <circle cx="60" cy="45" r="8" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
-            </svg>
-          </div>
-        </div>
-        <div class="absolute -bottom-2 -right-2 w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center shadow-lg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 15c.7-1.2 1-2.5 1-3.9 0-1.6-.4-3.1-1.1-4.4"/><path d="M2.8 15c-.7-1.2-1-2.5-1-3.9 0-1.6.4-3.1 1.1-4.4"/><path d="M17.5 7c.5-1.6.8-3.3.8-5"/><path d="M6.5 7c-.5-1.6-.8-3.3-.8-5"/><path d="M12 22v-7"/><path d="M9 12v4"/><path d="M15 12v4"/></svg>
-        </div>
-      </div>
-
+  <div class="mx-auto w-full max-w-6xl px-4 py-28 sm:px-6">
+    <div class="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
       <!-- Text content -->
-      <div class="flex-1 text-center md:text-left">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 backdrop-blur-sm px-4 py-1.5 text-sm mb-6">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-accent-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-accent-500"></span>
+      <div class="text-center lg:text-left">
+        <!-- Availability pill -->
+        <div
+          class="hero-reveal inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary backdrop-blur"
+          style="--d: 0ms"
+        >
+          <span class="relative flex size-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-60"></span>
+            <span class="relative inline-flex size-2 rounded-full bg-mint"></span>
           </span>
-          <span class="text-muted-foreground">Disponible para trabajar</span>
+          Disponible para trabajar
         </div>
 
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+        <h1
+          class="hero-reveal mt-6 text-[clamp(2.75rem,7vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.04em] text-foreground"
+          style="--d: 120ms"
+        >
           Hola, soy <span class="gradient-text">Alejandro Yero</span>
         </h1>
 
-        <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed">
-          <strong class="text-foreground font-semibold">Ingeniero en Ciencias Informáticas</strong> full-stack con énfasis en frontend. 
+        <p
+          class="hero-reveal mx-auto mt-6 max-w-xl text-lg leading-relaxed text-foreground-secondary md:text-xl lg:mx-0"
+          style="--d: 240ms"
+        >
+          <strong class="font-semibold text-foreground">Ingeniero en Ciencias Informáticas</strong> full-stack con énfasis en frontend.
           Más de 2 años diseñando soluciones eficientes que optimizan la gestión de procesos.
         </p>
 
         <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-          <a href="#contacto" class="inline-flex items-center justify-center h-11 px-6 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium hover:opacity-90 transition-opacity">
+        <div
+          class="hero-reveal mt-9 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start"
+          style="--d: 360ms"
+        >
+          <a href="#contacto" class="btn btn-primary">
             Contáctame
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
           </a>
-          <a href="/cv.pdf" class="inline-flex items-center justify-center h-11 px-6 rounded-lg border border-border bg-background text-foreground font-medium hover:bg-accent transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          <a href="/cv.pdf" class="btn btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>
             Descargar CV
           </a>
+        </div>
+      </div>
+
+      <!-- Abstract avatar illustration -->
+      <div
+        class="hero-reveal relative hidden justify-center lg:flex"
+        style="--d: 480ms"
+      >
+        <div class="avatar-ring p-[3px]">
+          <div class="flex size-72 items-center justify-center overflow-hidden rounded-full bg-surface shadow-[0_24px_60px_rgba(4,6,5,0.16)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.4)]">
+            <svg viewBox="0 0 200 200" class="avatar-figure size-full" aria-hidden="true">
+              <circle cx="100" cy="86" r="44" fill="none" stroke="currentColor" stroke-width="1" opacity="0.14" />
+              <circle cx="100" cy="86" r="30" fill="currentColor" opacity="0.14" />
+              <ellipse cx="100" cy="152" rx="56" ry="34" fill="currentColor" opacity="0.08" />
+              <circle cx="88" cy="80" r="3" fill="currentColor" opacity="0.5" />
+              <circle cx="112" cy="80" r="3" fill="currentColor" opacity="0.5" />
+              <path d="M90 98c6 5 14 5 20 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.35" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Floating code badge -->
+        <div class="absolute -right-1 top-10 flex size-14 items-center justify-center rounded-2xl border border-border bg-surface text-primary shadow-[0_10px_30px_rgba(4,6,5,0.14)] dark:text-mint dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>
         </div>
       </div>
     </div>
