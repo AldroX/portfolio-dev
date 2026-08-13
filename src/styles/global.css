@@ -125,6 +125,7 @@ h3 {
 .dark .btn-primary {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3),
     0 0 30px rgba(85, 211, 150, 0.15);
+    color:white
 }
 
 @media (hover: hover) {
