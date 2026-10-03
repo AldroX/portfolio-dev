@@ -38,11 +38,17 @@ const skills = [
       </div>
     </div>
 
-    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4" data-reveal>
+    <div
+      class="flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-4 sm:grid sm:grid-cols-2 sm:snap-none sm:overflow-visible sm:pb-0 lg:grid-cols-4"
+      role="region"
+      aria-label="Tecnologías"
+      tabindex="0"
+      data-reveal
+    >
       {skills.map((skill) => {
         const Icon = skill.icon;
         return (
-          <div class="card group p-8">
+          <div class="card group w-[82%] max-w-80 shrink-0 snap-start p-8 sm:w-auto">
             <div class="mb-6 inline-flex size-12 items-center justify-center rounded-xl border border-border bg-background-secondary">
               <Icon class="icon-mono size-6 opacity-90 transition-transform duration-300 group-hover:scale-110" />
             </div>

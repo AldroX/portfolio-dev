@@ -10,10 +10,10 @@ import avatar from "../../public/images/avatar.jpg";
     <div class="hero-glow-secondary" />
   </div>
 
-  <div class="mx-auto w-full max-w-6xl px-4 py-28 sm:px-6">
-    <div class="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
+  <div class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
+    <div class="grid items-center gap-7 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
       <!-- Text content -->
-      <div class="text-center lg:text-left">
+      <div class="order-last text-center lg:order-first lg:text-left">
         <!-- Availability pill -->
         <div
           class="hero-reveal inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/70 px-4 py-1.5 text-sm text-foreground-secondary backdrop-blur"
@@ -37,8 +37,7 @@ import avatar from "../../public/images/avatar.jpg";
           class="hero-reveal mx-auto mt-6 max-w-xl text-lg leading-relaxed text-foreground-secondary md:text-xl lg:mx-0"
           style="--d: 240ms"
         >
-          <strong class="font-semibold text-foreground">Ingeniero en Ciencias Informáticas</strong> full-stack con énfasis en frontend.
-          Más de 2 años diseñando soluciones eficientes que optimizan la gestión de procesos.
+          <strong class="font-semibold text-foreground">Ingeniero en Ciencias Informáticas</strong> y desarrollador full-stack con aproximadamente 3 años de experiencia. Especializado en frontend con Angular y TypeScript, con experiencia backend en NestJS y Django REST Framework.
         </p>
 
         <!-- CTA Buttons -->
@@ -50,26 +49,26 @@ import avatar from "../../public/images/avatar.jpg";
             Contáctame
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
           </a>
-          <a href="/cv.pdf" class="btn btn-secondary">
+          <a href="/Alejeandro-Yero-FullStack-CV.pdf" download class="btn btn-secondary">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>
             Descargar CV
           </a>
         </div>
       </div>
 
-      <!-- Abstract avatar illustration -->
+      <!-- Portrait -->
       <div
-        class="hero-reveal relative hidden justify-center lg:flex"
-        style="--d: 480ms"
+        class="hero-reveal relative order-first flex justify-center lg:order-last"
+        style="--d: 0ms"
       >
         <div class="avatar-ring p-[3px]">
-          <div class="flex size-72 items-center justify-center overflow-hidden rounded-full bg-surface shadow-[0_24px_60px_rgba(4,6,5,0.16)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.4)]">
-           <Image src={avatar} alt="Alejandro Yero" />
+          <div class="flex size-36 items-center justify-center overflow-hidden rounded-full bg-surface shadow-[0_24px_60px_rgba(4,6,5,0.16)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.4)] sm:size-40 lg:size-72">
+            <Image src={avatar} alt="Alejandro Yero" class="size-full object-cover object-center" />
           </div>
         </div>
 
         <!-- Floating code badge -->
-        <div class="absolute -right-1 top-10 flex size-14 items-center justify-center rounded-2xl border border-border bg-surface text-primary shadow-[0_10px_30px_rgba(4,6,5,0.14)] dark:text-mint dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+        <div class="absolute -right-1 top-10 hidden size-14 items-center justify-center rounded-2xl border border-border bg-surface text-primary shadow-[0_10px_30px_rgba(4,6,5,0.14)] dark:text-mint dark:shadow-[0_10px_30px_rgba(0,0,0,0.35)] lg:flex">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>
         </div>
       </div>
