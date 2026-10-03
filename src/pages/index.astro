@@ -1,34 +1,145 @@
 ---
-import Header from "@layouts/Header.astro";
 import "../styles/global.css";
-import Main from "@layouts/Main.astro";
+import Header from "@layouts/Header.astro";
 import Footer from "@layouts/Footer.astro";
-interface Props {
-  title: string;
-  description: string;
-}
-const { description, title } = Astro.props;
+import Hero from "@components/Hero.astro";
+import Skills from "@components/Skills.astro";
+import SectionContainer from "@components/SectionContainer.astro";
+import Briefcase from "@icons/Briefcase.astro";
+import Code from "@icons/Code.astro";
+import User from "@icons/User.astro";
+import Experience from "@components/Experience.astro";
+import Projects from "@components/Projects.astro";
+import About from "@components/About.astro";
+
+const seoTitle = "Alejandro Yero | Desarrollador Full-Stack";
+const seoDescription =
+  "Portfolio de Alejandro Yero, desarrollador full-stack con cerca de 3 años de experiencia en Angular, TypeScript, NestJS y Django REST Framework.";
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Alejandro Yero",
+  jobTitle: "Desarrollador Full-Stack",
+  description: seoDescription,
+  email: "alejandroyero925@gmail.com",
+  telephone: "+5359137704",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "La Habana",
+    addressCountry: "CU",
+  },
+  sameAs: [
+    "https://www.linkedin.com/in/alejandro-yero-ba4056304/",
+    "https://github.com/AldroX",
+  ],
+  knowsAbout: [
+    "Angular",
+    "TypeScript",
+    "NestJS",
+    "Django REST Framework",
+    "PostgreSQL",
+    "Prisma",
+  ],
+};
 ---
 
-<html lang="en">
+<html lang="es" class="">
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content={description} />
+    <meta name="description" content={seoDescription} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CU" />
+    <meta property="og:site_name" content="Alejandro Yero" />
+    <meta property="og:title" content={seoTitle} />
+    <meta property="og:description" content={seoDescription} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={seoTitle} />
+    <meta name="twitter:description" content={seoDescription} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{seoTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Prevent FOUC (flash of unstyled content with dark mode) -->
+    <script>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
   <body>
-    <div
-      class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(35,55,167,0.7),rgba(255,255,255,0))]"
-    >
-    </div>
     <Header />
-    <Main
-      title="Portafolio de aldrox - Desarrollador web con mas de 3 años"
-      description="Contrata a aldrox dev para crear tu aplicación web o móvil"
-    />
+    <main>
+      <Hero />
+      <SectionContainer id="sobre-mi">
+        <div class="mb-14 flex items-center gap-4" data-reveal>
+          <span class="flex size-11 items-center justify-center rounded-xl border border-border bg-surface text-primary dark:text-mint">
+            <User class="size-5" />
+          </span>
+          <h2 class="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+            Sobre mí
+          </h2>
+        </div>
+        <About />
+      </SectionContainer>
+      <Skills />
+      <SectionContainer id="experiencia">
+        <div class="mb-14 flex items-center gap-4" data-reveal>
+          <span class="flex size-11 items-center justify-center rounded-xl border border-border bg-surface text-primary dark:text-mint">
+            <Briefcase class="size-5" />
+          </span>
+          <h2 class="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+            Experiencia
+          </h2>
+        </div>
+        <Experience />
+      </SectionContainer>
+      <SectionContainer id="proyectos" class="bg-background-secondary">
+        <div class="mb-14 flex items-center gap-4" data-reveal>
+          <span class="flex size-11 items-center justify-center rounded-xl border border-border bg-surface text-primary dark:text-mint">
+            <Code class="size-5" />
+          </span>
+          <h2 class="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+            Proyectos
+          </h2>
+        </div>
+        <Projects />
+      </SectionContainer>
+    </main>
     <Footer />
+    <script>
+      document.documentElement.classList.add('js');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const targets = document.querySelectorAll('[data-reveal]');
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+        );
+        targets.forEach((target) => observer.observe(target));
+      } else {
+        targets.forEach((target) => target.classList.add('is-revealed'));
+      }
+    </script>
   </body>
 </html>

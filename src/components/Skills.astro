@@ -1,0 +1,62 @@
+---
+import TypeScriptIcon from '@icons/TypeScript.astro';
+import AngularIcon from '@icons/Angular.astro';
+import TailwindIcon from '@icons/Tailwind.astro';
+import AstroIcon from '@icons/AstroIcon.astro';
+import NestjsIcon from '@icons/Nestjs.astro';
+import PostgreSQL from '@icons/PostgreSQL.astro';
+import Prisma from '@icons/Prisma.astro';
+import Git from '@icons/Git.astro';
+import GitLab from '@icons/GitLab.astro';
+import Tool from '@icons/Tool.astro';
+
+const skills = [
+  { icon: TypeScriptIcon, name: "TypeScript", description: "Tipado estático, genéricos, interfaces" },
+  { icon: AngularIcon, name: "Angular", description: "Componentes, RxJS, señales, módulos" },
+  { icon: AstroIcon, name: "Astro", description: "Islas, contenido estático, View Transitions" },
+  { icon: NestjsIcon, name: "NestJS", description: "APIs REST, GraphQL, módulos y guards" },
+  { icon: PostgreSQL, name: "PostgreSQL", description: "Consultas, índices, relaciones complejas" },
+  { icon: Prisma, name: "Prisma", description: "ORM, migraciones, schema design" },
+  { icon: TailwindIcon, name: "Tailwind CSS", description: "Diseño utilitario, responsive, temas" },
+  { icon: Git, name: "Git", description: "Control de versiones, branching, CI/CD" },
+];
+---
+
+<section id="skills" class="relative bg-background-secondary py-24 md:py-32">
+  <div class="mx-auto w-full max-w-6xl px-4 sm:px-6">
+    <div class="mb-14 flex items-center gap-4" data-reveal>
+      <span class="flex size-11 items-center justify-center rounded-xl border border-border bg-surface text-primary dark:text-mint">
+        <Tool class="size-5" />
+      </span>
+      <div>
+        <h2 class="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+          Tecnologías que domino
+        </h2>
+        <p class="mt-2 text-base text-foreground-secondary">
+          Stack completo para llevar ideas a producción, del frontend al backend
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-4 sm:grid sm:grid-cols-2 sm:snap-none sm:overflow-visible sm:pb-0 lg:grid-cols-4"
+      role="region"
+      aria-label="Tecnologías"
+      tabindex="0"
+      data-reveal
+    >
+      {skills.map((skill) => {
+        const Icon = skill.icon;
+        return (
+          <div class="card group w-[82%] max-w-80 shrink-0 snap-start p-8 sm:w-auto">
+            <div class="mb-6 inline-flex size-12 items-center justify-center rounded-xl border border-border bg-background-secondary">
+              <Icon class="icon-mono size-6 opacity-90 transition-transform duration-300 group-hover:scale-110" />
+            </div>
+            <h3 class="text-lg font-semibold text-foreground">{skill.name}</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-foreground-muted">{skill.description}</p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

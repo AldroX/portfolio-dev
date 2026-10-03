@@ -1,151 +1,138 @@
 ---
-import Tailwind from '@icons/Tailwind.astro'
-import Angular from '@icons/Angular.astro'
+import Tailwind from '@icons/Tailwind.astro';
+import Angular from '@icons/Angular.astro';
+import AstroIcon from '@icons/AstroIcon.astro';
+import TypeScript from '@icons/TypeScript.astro';
 import Nestjs from '@icons/Nestjs.astro';
 import PostgreSQL from '@icons/PostgreSQL.astro';
 import Prisma from '@icons/Prisma.astro';
 import Swagger from '@icons/Swagger.astro';
+
 const SKILL = {
-  ANGULAR: {
-    name: "Angular",
-    class: "bg-purple-900/60 text-white",
-    icon: Angular
-  },
-  TAILWIND: {
-    name: "Tailwind",
-    class: "bg-[#003159] text-[#73bcf6]",
-    icon:Tailwind
-  },
-  NESTJS: {
-    name: "Nestjs",
-    class: "bg-red-900 text-red-100",
-    icon:Nestjs
-  },
-  POSTGRESQL: {
-    name:"Postgresql",
-    class: "bg-blue-900 text-white",
-    icon:PostgreSQL
-  },
-  PRISMA: {
-    name: "Prisma",
-    class: "bg-green-900 text-green-300",
-    icon: Prisma
-  },
-  SWAGGER: {
-    name:"Swagger",
-    class: "bg-green-700 text-white",
-    icon:Swagger
-  }
+  ANGULAR: { name: "Angular", icon: Angular },
+  TYPESCRIPT: { name: "TypeScript", icon: TypeScript },
+  TAILWIND: { name: "Tailwind CSS", icon: Tailwind },
+  ASTRO: { name: "Astro", icon: AstroIcon },
+  NESTJS: { name: "NestJS", icon: Nestjs },
+  POSTGRESQL: { name: "PostgreSQL", icon: PostgreSQL },
+  PRISMA: { name: "Prisma", icon: Prisma },
+  SWAGGER: { name: "Swagger", icon: Swagger },
 };
+
 const PROJECTS = [
   {
-    img: "/projects/mortyProject.webp",
-    title: "App envios",
-    description: "Una app de envios",
-    skill: [SKILL.ANGULAR, SKILL.TAILWIND],
-    links: "https://morty-app-ten.vercel.app/",
-    gitHub: "https://github.com/AldroX/RickMorty.git",
+    img: "/projects/SonApi.webp",
+    title: "API de Gestión de Proyecto Musical",
+    description: "API REST modular para gestionar eventos, miembros, patrocinadores, videos y usuarios. Incluye autenticación JWT con roles, validación, documentación OpenAPI y persistencia con Prisma y PostgreSQL.",
+    skill: [SKILL.NESTJS, SKILL.TYPESCRIPT, SKILL.PRISMA, SKILL.POSTGRESQL, SKILL.SWAGGER],
+    sourceUrl: "https://github.com/AldroX/project-son",
   },
-    {
+
+  {
+    img: "/projects/EnergiaTotalT.webp",
+    title: "EnergíaTotal — E-commerce de soluciones energéticas",
+    description: "Aplicación mobile-first para presentar y comercializar soluciones de energía. Incluye catálogo, categorías, kits, ofertas y guías; integra Supabase y facilita consultas por WhatsApp.",
+    skill: [SKILL.ASTRO, SKILL.TYPESCRIPT, SKILL.TAILWIND],
+    sourceUrl: "https://github.com/AldroX/electronics-ecommerce",
+  },
+  {
+    img: "/projects/STORE.webp",
+    title: "Store — E-commerce",
+    description: "E-commerce desarrollado con Angular y TypeScript, con catálogo de productos, categorías, variantes y carrito de compras. Integra una API REST y utiliza una estructura modular de componentes reutilizables.",
+    skill: [SKILL.ANGULAR, SKILL.TYPESCRIPT],
+    sourceUrl: "https://github.com/AldroX/Store",
+  },
+  {
+    img: "/projects/page-transport.webp",
+    title: "Rastras Transport — Landing Page",
+    description: "Sitio corporativo responsive para una empresa de transporte de carga y logística portuaria. Presenta servicios, flota y proceso de trabajo; está construido con Astro y Tailwind CSS y desplegado como sitio estático.",
+    skill: [SKILL.ASTRO, SKILL.TYPESCRIPT, SKILL.TAILWIND],
+    demoUrl: "https://transport-landing-gray.vercel.app/",
+    sourceUrl: "https://github.com/AldroX/transport-landing",
+  },
+
+   {
     img: "/projects/todoApp.webp",
-    title: "Todo App",
-    description: "Una app encargada de la gestion de las tareas de cada usuario",
-    skill: [SKILL.ANGULAR, SKILL.NESTJS, SKILL.POSTGRESQL, SKILL.PRISMA,SKILL.SWAGGER],
-    links: "https://morty-app-ten.vercel.app/",
-    gitHub: "https://github.com/AldroX/RickMorty.git",
+    title: "Aplicación de Gestión de Tareas",
+    description: "Aplicación full-stack para gestionar usuarios y tareas, con autenticación y autorización basada en roles. Angular y TypeScript en el frontend; NestJS, Prisma y PostgreSQL en el backend.",
+    skill: [SKILL.ANGULAR, SKILL.TYPESCRIPT, SKILL.NESTJS, SKILL.PRISMA, SKILL.POSTGRESQL],
+    sourceUrl: "https://github.com/AldroX/todo-app",
   },
-];
----
-
-{
-  PROJECTS.map(({ title, description, skill, img, links, gitHub }) => (
-    <article class="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-900/60 hover:border-purple-900/60 mb-10">
-      {/* Imagen con overlay */}
-      <div class="relative overflow-hidden">
-        <img
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-          src={img}
-          alt={`Captura de pantalla del proyecto ${title}`}
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-        {/* Botones de acción */}
-        <div class="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-          <a
-            href={links}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-blue-500/90 hover:bg-blue-500 text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200 hover:scale-105"
-          >
-            Ver Demo
-          </a>
-          <a
-            href={gitHub}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-gray-800/90 hover:bg-gray-700 text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200 hover:scale-105"
-          >
-            GitHub
-          </a>
-        </div>
-      </div>
-
-      {/* Contenido */}
-      <div class="p-6">
-        <h3 class="text-2xl font-bold text-blue-500 mb-3 group-hover:text-blue-300 transition-colors duration-300">
-          {title}
-        </h3>
-        <p class="text-gray-300 mb-6 text-pretty leading-relaxed">
-          {description}
-        </p>
-
-        {/* Skills */}
-        <div class="flex flex-wrap gap-2">
-          {skill.map((skill) => (
-            <span class={`flex items-center gap-x-2 rounded-full text-xs ${skill.class} px-2 py-1`}>
-              <skill.icon class=" size-5" />
-              {skill.name}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Efecto de brillo en hover */}
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-    </article>
-  ))
-}
-
-<!-- ---
-const PROJECTS = [
   {
-    img: "/projects/mortyProject.webp",
-    title: "App envios",
-    description: "Una app de envios",
-    skill: ["HTML", "CSS", "JavaScript"],
-    links: "https://morty-app-ten.vercel.app/",
-    gitHub: "https://github.com/AldroX/RickMorty.git",
-  },
+    img:"/projects/mortyProject.webp",
+    title: "Rick and Morty — SPA de Personajes",
+    description: "SPA que consume la API de Rick and Morty para mostrar personajes, episodios y localizaciones. Implementa paginación, búsqueda y filtrado; utiliza Angular, TypeScript y Tailwind CSS en el frontend.",
+    skill: [SKILL.ANGULAR, SKILL.TYPESCRIPT],
+    demoUrl: "https://morty-app-ten.vercel.app/",
+    sourceUrl: "https://github.com/AldroX/RickMorty",
+  }
 ];
 ---
 
-{
-  PROJECTS.map(({ title, description, skill, img }) => (
-    <article>
-      <img
-        class=" rounded shadow-2xl shadow-white/10 w-full h-64 object-cover"
-        src={img}
-        alt={`Captura de pantalla del proyecto ${title}`}
-      />
-      <h3 class="text-2xl font-semibold text-yellow-200 mb-2 ">{title}</h3>
-      <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex flex-row gap-4">
-        {skill.map((skill) => (
-          <li class=" border rounded-2xl px-4 py-2 mb-4 text-amber-300 bg-yellow-950 text-sm font-medium ">
-            {skill}
-          </li>
-        ))}
-      </ul>
-    </article>
-  ))
-} -->
+<div
+  class="flex snap-x snap-mandatory gap-6 overflow-x-auto overscroll-x-contain pb-4 md:grid md:grid-cols-2 md:snap-none md:overflow-visible md:pb-0"
+  role="region"
+  aria-label="Proyectos destacados"
+  tabindex="0"
+  data-reveal
+>
+  {
+    PROJECTS.map(({ title, description, skill, img, demoUrl, sourceUrl }) => (
+      <article class="card group w-[88%] max-w-[32rem] shrink-0 snap-start overflow-hidden md:w-auto md:max-w-none">
+        {img && (
+          <div class="relative h-44 overflow-hidden border-b border-border">
+            <img
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              src={img}
+              alt={title}
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" aria-hidden="true" />
+          </div>
+        )}
+
+        <!-- Body -->
+        <div class="p-8">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-lg font-semibold leading-tight text-foreground">{title}</h3>
+            {demoUrl && (
+              <a
+                href={demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Abrir demo de ${title}`}
+                class="mt-1 shrink-0 text-foreground-muted transition-colors hover:text-primary dark:hover:text-mint"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
+              </a>
+            )}
+          </div>
+          <p class="mt-2 text-sm leading-relaxed text-foreground-muted">{description}</p>
+
+          <div class="mt-6 flex flex-wrap gap-2">
+            {skill.map((s) => (
+              <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-background-secondary px-3 py-1 text-xs font-medium text-foreground-secondary">
+                <s.icon class="icon-mono size-3.5 opacity-80" />
+                {s.name}
+              </span>
+            ))}
+          </div>
+
+          {(demoUrl || sourceUrl) && (
+            <div class="mt-7 flex flex-wrap gap-3">
+              {demoUrl && (
+                <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                  Demo
+                </a>
+              )}
+              {sourceUrl && (
+                <a href={sourceUrl} target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  GitHub
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      </article>
+    ))
+  }
+</div>
